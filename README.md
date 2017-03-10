@@ -1,3 +1,3 @@
 <p align="center">
-  <b>BitcoinTracker</b><br>
+  <h1><b>BitcoinTracker</b></h1><br>
 </p>
