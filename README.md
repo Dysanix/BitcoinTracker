@@ -1,2 +1,2 @@
 # BitcoinTracker
-Bitcoin Wallet Value Tracker
+## Track your wallet value in real-time!
