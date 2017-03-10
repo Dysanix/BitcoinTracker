@@ -17,11 +17,16 @@
         </Controls:WindowCommands>
     </Controls:MetroWindow.LeftWindowCommands>
     <Grid>
-        <Label x:Name="lblWalletEUR" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="10,10,10,10" VerticalContentAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
-        <Image x:Name="imgPulse" SnapsToDevicePixels="False" Margin="5,5,0,0" RenderOptions.EdgeMode="Unspecified" Source="img/greendot.png" HorizontalAlignment="Left" Height="10" VerticalAlignment="Top" Width="10" Opacity="0">
-            <Image.Effect>
-                <BlurEffect Radius="3" RenderingBias="Quality"/>
-            </Image.Effect>
-        </Image>
+        <StackPanel Orientation="Horizontal" Margin="5,5,5,0">
+            <Image x:Name="imgPulse" SnapsToDevicePixels="False"  RenderOptions.EdgeMode="Unspecified" Source="img/greendot.png" HorizontalAlignment="Left" Height="10" VerticalAlignment="Top" Width="10" Opacity="0">
+                <Image.Effect>
+                    <BlurEffect Radius="3" RenderingBias="Quality"/>
+                </Image.Effect>
+            </Image>
+            <TextBlock x:Name="txtInfo" Margin="5,-5,0,0" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Red"/>
+        </StackPanel>
+        <StackPanel>
+            <Label x:Name="lblWalletEUR" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="10,10,10,10" VerticalContentAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+        </StackPanel>
     </Grid>
 </Controls:MetroWindow>

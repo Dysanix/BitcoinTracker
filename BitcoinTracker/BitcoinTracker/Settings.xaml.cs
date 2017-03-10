@@ -15,7 +15,7 @@ namespace BitcoinTracker
     /// </summary>
     public partial class Settings : MetroWindow
     {
-        List<string> APIs = new List<string> { "Blockchain", "Bitstamp", "GDax" };
+        List<string> APIs = new List<string> { "GDax", "Blockchain", "Bitstamp"  };
         List<string> CurrencyList = new List<string> { "USD", "EUR" };
 
         public Settings()

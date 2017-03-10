@@ -22,6 +22,8 @@ namespace BitcoinTracker
         WebClient webClient = new WebClient();
         public static MainWindow Instance;
         double lastWallet = 0;
+        string lastJSONString = "";
+        int JSONRepetitionCounter = 0;
 
         BitmapImage imgBluedot = LoadBitmapFromResource("/img/bluedot.png");
         BitmapImage imgGreendot = LoadBitmapFromResource("/img/greendot.png");
@@ -54,9 +56,7 @@ namespace BitcoinTracker
         {
             try
             {
-                webClient.Headers.Add("Accept-Language", " en-US");
-                webClient.Headers.Add("Accept", " text/html, application/xhtml+xml, */*");
-                webClient.Headers.Add("User-Agent", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)");
+                setUserAgent();
                 double value = 0;
                 int currency = 0;
                 string symbol = "$";
@@ -113,22 +113,56 @@ namespace BitcoinTracker
                     });
                 }
                 lastWallet = currentWallet;
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    if (JSONRepetitionCounter > 20)
+                    {
+                        txtInfo.Text = "Try to switch API";
+                    }
+                    else
+                    {
+                        txtInfo.Text = "";
+                    }
+                });
             }
             catch
             {
                 Application.Current.Dispatcher.Invoke(() =>
                 {
+                    txtInfo.Text = "Try to switch API";
+                    lblWalletEUR.Content = null;
                     imgPulse.Source = imgReddot;
                     imgPulse.Visibility = Visibility.Visible;
-                    DoubleAnimation dAnimation = new DoubleAnimation() { From = 0, To = 1, AutoReverse = true, Duration = new Duration(TimeSpan.FromSeconds(0.7)) };
+                    DoubleAnimation dAnimation = new DoubleAnimation() { From = 0, To = 1, AutoReverse = true, Duration = new Duration(TimeSpan.FromSeconds(1)) };
                     imgPulse.BeginAnimation(OpacityProperty, dAnimation);
                 });
             }
         }
 
+        public void setUserAgent()
+        {
+            webClient.Headers.Add("Accept-Language", " en-US");
+            webClient.Headers.Add("Accept", " text/html, application/xhtml+xml, */*");
+            webClient.Headers.Add("User-Agent", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)");
+        }
+
+        public void checkRepetition(string JSON)
+        {
+            if (JSON.Equals(lastJSONString))
+            {
+                JSONRepetitionCounter += 1;
+            }
+            else
+            {
+                JSONRepetitionCounter = 0;
+            }
+            lastJSONString = JSON;
+        }
+
         public double getBlockchainValue(int currency)
         {
             string JSON = webClient.DownloadString("https://blockchain.info/nl/ticker");
+            checkRepetition(JSON);
             dynamic exchangeRatesComplete = JsonConvert.DeserializeObject(JSON);
             if (currency == 0)
             {
@@ -142,10 +176,12 @@ namespace BitcoinTracker
             if (currency == 0)
             {
                 string JSONUSD = webClient.DownloadString("https://www.bitstamp.net/api/v2/ticker/btcusd/");
+                checkRepetition(JSONUSD);
                 dynamic exchangeRatesCompleteUSD = JsonConvert.DeserializeObject(JSONUSD);
                 return exchangeRatesCompleteUSD["last"];
             }
             string JSONEUR = webClient.DownloadString("https://www.bitstamp.net/api/v2/ticker/btceur/");
+            checkRepetition(JSONEUR);
             dynamic exchangeRatesCompleteEUR = JsonConvert.DeserializeObject(JSONEUR);
             return exchangeRatesCompleteEUR["last"];
         }
@@ -155,10 +191,12 @@ namespace BitcoinTracker
             if (currency == 0)
             {
                 string JSONUSD = webClient.DownloadString("https://api.gdax.com/products/BTC-USD/ticker");
+                checkRepetition(JSONUSD);
                 dynamic exchangeRatesCompleteUSD = JsonConvert.DeserializeObject(JSONUSD);
                 return exchangeRatesCompleteUSD["price"];
             }
             string JSONEUR = webClient.DownloadString("https://api.gdax.com/products/BTC-EUR/ticker");
+            checkRepetition(JSONEUR);
             dynamic exchangeRatesCompleteEUR = JsonConvert.DeserializeObject(JSONEUR);
             return exchangeRatesCompleteEUR["price"];
         }
