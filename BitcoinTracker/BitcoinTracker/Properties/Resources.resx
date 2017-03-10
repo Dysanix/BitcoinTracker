@@ -139,6 +139,15 @@
             &lt;setting name="currencyTag" serializeAs="String"&gt;
                 &lt;value&gt;USD&lt;/value&gt;
             &lt;/setting&gt;
+            &lt;setting name="inForeground" serializeAs="String"&gt;
+                &lt;value&gt;True&lt;/value&gt;
+            &lt;/setting&gt;
+            &lt;setting name="inTaskbar" serializeAs="String"&gt;
+                &lt;value&gt;False&lt;/value&gt;
+            &lt;/setting&gt;
+            &lt;setting name="showPulseIcon" serializeAs="String"&gt;
+                &lt;value&gt;True&lt;/value&gt;
+            &lt;/setting&gt;
         &lt;/BitcoinTracker.Properties.Settings&gt;
     &lt;/userSettings&gt;
 &lt;/configuration&gt;</value>

@@ -18,5 +18,10 @@
     </Controls:MetroWindow.LeftWindowCommands>
     <Grid>
         <Label x:Name="lblWalletEUR" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="10,10,10,10" VerticalContentAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+        <Image x:Name="imgPulse" SnapsToDevicePixels="False" Margin="5,5,0,0" RenderOptions.EdgeMode="Unspecified" Source="img/greendot.png" HorizontalAlignment="Left" Height="10" VerticalAlignment="Top" Width="10" Opacity="0">
+            <Image.Effect>
+                <BlurEffect Radius="3" RenderingBias="Quality"/>
+            </Image.Effect>
+        </Image>
     </Grid>
 </Controls:MetroWindow>

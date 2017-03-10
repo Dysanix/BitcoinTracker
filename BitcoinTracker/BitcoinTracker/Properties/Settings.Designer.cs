@@ -58,5 +58,41 @@ namespace BitcoinTracker.Properties {
                 this["currencyTag"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool inForeground {
+            get {
+                return ((bool)(this["inForeground"]));
+            }
+            set {
+                this["inForeground"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool inTaskbar {
+            get {
+                return ((bool)(this["inTaskbar"]));
+            }
+            set {
+                this["inTaskbar"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool showPulseIcon {
+            get {
+                return ((bool)(this["showPulseIcon"]));
+            }
+            set {
+                this["showPulseIcon"] = value;
+            }
+        }
     }
 }

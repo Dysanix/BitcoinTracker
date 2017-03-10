@@ -11,5 +11,14 @@
     <Setting Name="currencyTag" Type="System.String" Scope="User">
       <Value Profile="(Default)">USD</Value>
     </Setting>
+    <Setting Name="inForeground" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="inTaskbar" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="showPulseIcon" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

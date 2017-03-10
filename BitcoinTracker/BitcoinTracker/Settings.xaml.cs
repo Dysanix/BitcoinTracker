@@ -39,6 +39,9 @@ namespace BitcoinTracker
             sliderInterval.Value = Properties.Settings.Default.updateInterval;
             comboCurrency.SelectedItem = Properties.Settings.Default.currencyTag;
             txtBitcoins.Text = Properties.Settings.Default.currentBitcoins.ToString();
+            chckTopMost.IsChecked = Properties.Settings.Default.inForeground;
+            chckTaskbar.IsChecked = Properties.Settings.Default.inTaskbar;
+            chckPulseIcon.IsChecked = Properties.Settings.Default.showPulseIcon;
         }
 
         private void sliderInterval_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -71,7 +74,12 @@ namespace BitcoinTracker
                 Properties.Settings.Default.updateInterval = (int)sliderInterval.Value;
                 Properties.Settings.Default.currencyTag = comboCurrency.SelectedItem.ToString();
                 Properties.Settings.Default.currentBitcoins = d;
+                Properties.Settings.Default.inForeground = chckTopMost.IsChecked.Value;
+                Properties.Settings.Default.showPulseIcon = chckPulseIcon.IsChecked.Value;
+                Properties.Settings.Default.inTaskbar = chckTaskbar.IsChecked.Value;
                 Properties.Settings.Default.Save();
+                MainWindow.Instance.ShowInTaskbar = chckTaskbar.IsChecked.Value;
+                MainWindow.Instance.Topmost = chckTopMost.IsChecked.Value;
                 this.Close();
             }
             else

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BitcoinTracker"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="Settings" Height="215.584" Width="200" WindowStyle="ToolWindow" Topmost="True" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Settings" Height="289.583" Width="200" WindowStyle="ToolWindow" Topmost="True" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <ComboBox x:Name="comboCurrency" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" Margin="75,41,10,0" VerticalAlignment="Top" />
         <Label x:Name="label" Content="Currency:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" />
@@ -17,6 +17,8 @@
         <Label x:Name="label_Copy1" Content="Bitcoins:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" />
         <local:DoubleTextBox x:Name="txtBitcoins" VerticalContentAlignment="Center" PreviewTextInput="txtBitcoins_PreviewTextInput" HorizontalAlignment="Stretch" Height="26" Margin="75,10,10,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy2" Content="Created by Dysanix" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Bottom" />
-
+        <CheckBox x:Name="chckTopMost" IsChecked="True" Content="Keep in foreground" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="chckTaskbar" Content="Show in taskbar" HorizontalAlignment="Left" Margin="10,145,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="chckPulseIcon" Content="Show pulse icon" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Controls:MetroWindow>
