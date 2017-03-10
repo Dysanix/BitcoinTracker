@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # BitcoinTracker
 Bitcoin Wallet Value Tracker
 
@@ -22,3 +23,7 @@ I decided to write a little 'widget' that stays on top of your screen and always
 I can assure you this is not malware, but if you don't trust it, then don't run it![/size]
 
 [/align]
+=======
+# **BitcoinTracker**
+# [Click here for more information](https://hackforums.net/showthread.php?tid=5571230)
+>>>>>>> origin/master

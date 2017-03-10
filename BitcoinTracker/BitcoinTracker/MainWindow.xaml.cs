@@ -1,6 +1,7 @@
 ﻿using MahApps.Metro.Controls;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Reflection;
@@ -53,18 +54,38 @@ namespace BitcoinTracker
         {
             try
             {
-                
-                string JSON = webClient.DownloadString("https://blockchain.info/nl/ticker");
-                dynamic exchangeRatesComplete = JsonConvert.DeserializeObject(JSON);
-                dynamic exchangeRatesCurrency = exchangeRatesComplete[Properties.Settings.Default.currencyTag];
-                double currentWallet = exchangeRatesCurrency["last"] * Properties.Settings.Default.currentBitcoins;
+                webClient.Headers.Add("Accept-Language", " en-US");
+                webClient.Headers.Add("Accept", " text/html, application/xhtml+xml, */*");
+                webClient.Headers.Add("User-Agent", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)");
+                double value = 0;
+                int currency = 0;
+                string symbol = "$";
+                if (Properties.Settings.Default.currencyTag.Equals("EUR"))
+                {
+                    currency = 1;
+                    symbol = "€";
+                }
+                switch (Properties.Settings.Default.API)
+                {
+                    case "Blockchain":
+                        value = getBlockchainValue(currency);
+                        break;
+                    case "Bitstamp":
+                        value = getBitstampValue(currency);
+                        break;
+                    case "GDax":
+                        value = getGDaxValue(currency);
+                        break;
+
+                }
+                double currentWallet = value * Properties.Settings.Default.currentBitcoins;
                 if ((currentWallet % 1) == 0)
                 {
-                    lblWalletEUR.Invoke(new Action(() => lblWalletEUR.Content = exchangeRatesCurrency["symbol"] + currentWallet));
+                    lblWalletEUR.Invoke(new Action(() => lblWalletEUR.Content = symbol + currentWallet));
                 }
                 else
                 {
-                    lblWalletEUR.Invoke(new Action(() => lblWalletEUR.Content = exchangeRatesCurrency["symbol"] + String.Format("{0:0.00}", currentWallet)));
+                    lblWalletEUR.Invoke(new Action(() => lblWalletEUR.Content = symbol + String.Format("{0:0.00}", currentWallet)));
                 }
                 if (Properties.Settings.Default.showPulseIcon)
                 {
@@ -93,7 +114,53 @@ namespace BitcoinTracker
                 }
                 lastWallet = currentWallet;
             }
-            catch { }
+            catch
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    imgPulse.Source = imgReddot;
+                    imgPulse.Visibility = Visibility.Visible;
+                    DoubleAnimation dAnimation = new DoubleAnimation() { From = 0, To = 1, AutoReverse = true, Duration = new Duration(TimeSpan.FromSeconds(0.7)) };
+                    imgPulse.BeginAnimation(OpacityProperty, dAnimation);
+                });
+            }
+        }
+
+        public double getBlockchainValue(int currency)
+        {
+            string JSON = webClient.DownloadString("https://blockchain.info/nl/ticker");
+            dynamic exchangeRatesComplete = JsonConvert.DeserializeObject(JSON);
+            if (currency == 0)
+            {
+                return exchangeRatesComplete["USD"]["last"];
+            }
+            return exchangeRatesComplete["EUR"]["last"];
+        }
+
+        public double getBitstampValue(int currency)
+        {
+            if (currency == 0)
+            {
+                string JSONUSD = webClient.DownloadString("https://www.bitstamp.net/api/v2/ticker/btcusd/");
+                dynamic exchangeRatesCompleteUSD = JsonConvert.DeserializeObject(JSONUSD);
+                return exchangeRatesCompleteUSD["last"];
+            }
+            string JSONEUR = webClient.DownloadString("https://www.bitstamp.net/api/v2/ticker/btceur/");
+            dynamic exchangeRatesCompleteEUR = JsonConvert.DeserializeObject(JSONEUR);
+            return exchangeRatesCompleteEUR["last"];
+        }
+
+        public double getGDaxValue(int currency)
+        {
+            if (currency == 0)
+            {
+                string JSONUSD = webClient.DownloadString("https://api.gdax.com/products/BTC-USD/ticker");
+                dynamic exchangeRatesCompleteUSD = JsonConvert.DeserializeObject(JSONUSD);
+                return exchangeRatesCompleteUSD["price"];
+            }
+            string JSONEUR = webClient.DownloadString("https://api.gdax.com/products/BTC-EUR/ticker");
+            dynamic exchangeRatesCompleteEUR = JsonConvert.DeserializeObject(JSONEUR);
+            return exchangeRatesCompleteEUR["price"];
         }
 
         public static BitmapImage LoadBitmapFromResource(string pathInApplication, Assembly assembly = null)

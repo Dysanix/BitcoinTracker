@@ -1,7 +1,11 @@
 ﻿using MahApps.Metro.Controls;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace BitcoinTracker
@@ -11,31 +15,15 @@ namespace BitcoinTracker
     /// </summary>
     public partial class Settings : MetroWindow
     {
+        List<string> APIs = new List<string> { "Blockchain", "Bitstamp", "GDax" };
+        List<string> CurrencyList = new List<string> { "USD", "EUR" };
+
         public Settings()
         {
             InitializeComponent();
-            comboCurrency.Items.Add("EUR");
-            comboCurrency.Items.Add("USD");
-            comboCurrency.Items.Add("ISK");
-            comboCurrency.Items.Add("HKD");
-            comboCurrency.Items.Add("TWD");
-            comboCurrency.Items.Add("CHF");
-            comboCurrency.Items.Add("DKK");
-            comboCurrency.Items.Add("CLP");
-            comboCurrency.Items.Add("CAD");
-            comboCurrency.Items.Add("CNY");
-            comboCurrency.Items.Add("THB");
-            comboCurrency.Items.Add("AUD");
-            comboCurrency.Items.Add("SGD");
-            comboCurrency.Items.Add("KRW");
-            comboCurrency.Items.Add("JPY");
-            comboCurrency.Items.Add("PLN");
-            comboCurrency.Items.Add("GBP");
-            comboCurrency.Items.Add("SEK");
-            comboCurrency.Items.Add("NZD");
-            comboCurrency.Items.Add("BRL");
-            comboCurrency.Items.Add("RUB");
-            comboCurrency.SelectedIndex = 0;
+            foreach (string API in APIs) { comboAPI.Items.Add(API); }
+            foreach (string Currency in CurrencyList){comboCurrency.Items.Add(Currency);}
+            comboAPI.SelectedItem = Properties.Settings.Default.API;
             sliderInterval.Value = Properties.Settings.Default.updateInterval;
             comboCurrency.SelectedItem = Properties.Settings.Default.currencyTag;
             txtBitcoins.Text = Properties.Settings.Default.currentBitcoins.ToString();
@@ -71,6 +59,7 @@ namespace BitcoinTracker
             bool isDouble = Double.TryParse(txtBitcoins.Text, out d);
             if (isDouble)
             {
+                Properties.Settings.Default.API = comboAPI.SelectedItem.ToString();
                 Properties.Settings.Default.updateInterval = (int)sliderInterval.Value;
                 Properties.Settings.Default.currencyTag = comboCurrency.SelectedItem.ToString();
                 Properties.Settings.Default.currentBitcoins = d;

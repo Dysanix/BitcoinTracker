@@ -148,6 +148,9 @@
             &lt;setting name="showPulseIcon" serializeAs="String"&gt;
                 &lt;value&gt;True&lt;/value&gt;
             &lt;/setting&gt;
+            &lt;setting name="API" serializeAs="String"&gt;
+                &lt;value&gt;GDax&lt;/value&gt;
+            &lt;/setting&gt;
         &lt;/BitcoinTracker.Properties.Settings&gt;
     &lt;/userSettings&gt;
 &lt;/configuration&gt;</value>

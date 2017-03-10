@@ -94,5 +94,17 @@ namespace BitcoinTracker.Properties {
                 this["showPulseIcon"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("GDax")]
+        public string API {
+            get {
+                return ((string)(this["API"]));
+            }
+            set {
+                this["API"] = value;
+            }
+        }
     }
 }
