@@ -6,18 +6,18 @@
         xmlns:local="clr-namespace:BitcoinTracker"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="Settings" Height="322.916" Width="200" WindowStyle="ToolWindow" Topmost="True" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Settings" Height="341.583" Width="200" WindowStyle="ToolWindow" Topmost="True" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <ComboBox x:Name="comboCurrency" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" Margin="75,72,10,0" VerticalAlignment="Top" />
         <ComboBox x:Name="comboAPI" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" Margin="75,10,10,0" VerticalAlignment="Top"/>
         <Label x:Name="label" Content="Currency:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" />
-        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Center" Margin="0,0,0,31" VerticalAlignment="Bottom" Width="75" Click="btnSave_Click"/>
+        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Center" Margin="0,0,0,47" VerticalAlignment="Bottom" Width="75" Click="btnSave_Click"/>
         <Label x:Name="label_Copy" Content="Refresh:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" />
         <Label x:Name="lblInterval" Content="1500 ms" HorizontalContentAlignment="Center" Margin="75,126,10,0" VerticalAlignment="Top"/>
         <Slider x:Name="sliderInterval" IsSnapToTickEnabled="True" HorizontalAlignment="Stretch" Margin="75,107,10,0" VerticalAlignment="Top" Height="19" Maximum="60000" Minimum="1500"  SmallChange="100" LargeChange="1000" ValueChanged="sliderInterval_ValueChanged" TickFrequency="100"  />
         <Label x:Name="label_Copy1" Content="Bitcoins:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" />
         <local:DoubleTextBox x:Name="txtBitcoins" VerticalContentAlignment="Center" PreviewTextInput="txtBitcoins_PreviewTextInput" HorizontalAlignment="Stretch" Height="26" Margin="75,41,10,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Copy2" Content="Created by Dysanix" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Bottom" />
+        <TextBlock x:Name="lblCredit" TextAlignment="Center" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Bottom" Height="38" />
         <CheckBox x:Name="chckTopMost" IsChecked="True" Content="Keep in foreground" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="chckTaskbar" Content="Show in taskbar" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="chckPulseIcon" Content="Show pulse icon" HorizontalAlignment="Left" Margin="10,203,0,0" VerticalAlignment="Top"/>

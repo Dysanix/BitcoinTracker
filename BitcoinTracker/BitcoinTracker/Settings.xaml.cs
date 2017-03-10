@@ -30,6 +30,7 @@ namespace BitcoinTracker
             chckTopMost.IsChecked = Properties.Settings.Default.inForeground;
             chckTaskbar.IsChecked = Properties.Settings.Default.inTaskbar;
             chckPulseIcon.IsChecked = Properties.Settings.Default.showPulseIcon;
+            lblCredit.Text = "Created by Dysanix\nVersion 1.3";
         }
 
         private void sliderInterval_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
