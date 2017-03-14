@@ -45,7 +45,7 @@ namespace BitcoinTracker
                     AppDomain.CurrentDomain.BaseDirectory + "\\" + System.AppDomain.CurrentDomain.FriendlyName +
                     ".config", Properties.Resources.configfile);
                 System.Windows.Forms.MessageBox.Show(
-                    "Configuration file has been created! BitcoinTracker has to restart now!", "BitcoinTracker",
+                    "Configuration file has been created!\nBitcoinTracker has to restart now!", "BitcoinTracker",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Process.Start(System.Reflection.Assembly.GetExecutingAssembly().Location);
                 Application.Current.Shutdown();
@@ -138,7 +138,7 @@ namespace BitcoinTracker
                     DataStorage.LastApiPulseRepetitions = 0;
                 }
 
-                currentWallet = value * Properties.Settings.Default.currentBitcoins;
+                currentWallet = double.Parse($"{value * Properties.Settings.Default.currentBitcoins:0.00}");
 
                 if (currentWallet > alertHigh && alertHigh != 0)
                 {
@@ -167,17 +167,11 @@ namespace BitcoinTracker
                     Properties.Settings.Default.Save();
                 }
 
+                
+                lblWalletEUR.Invoke(currency == 0
+                    ? new Action(() => lblWalletEUR.Content = symbol + currentWallet)
+                    : new Action(() => lblWalletEUR.Content = (symbol + currentWallet).Replace(".", ",")));
 
-                if (Math.Abs(currentWallet % 1) < 0)
-                {
-                    lblWalletEUR.Invoke(new Action(() => lblWalletEUR.Content = symbol + currentWallet));
-                }
-                else
-                {
-                    lblWalletEUR.Invoke(currency == 0
-                        ? new Action(() => lblWalletEUR.Content = symbol + $"{currentWallet:0.00}")
-                        : new Action(() => lblWalletEUR.Content = symbol + $"{currentWallet:0.00}".Replace(".", ",")));
-                }
                 if (DataStorage.JsonRepetitions > 20)
                 {
                     Application.Current.Dispatcher.Invoke(() =>
@@ -219,7 +213,7 @@ namespace BitcoinTracker
                             txtInfo.BeginAnimation(OpacityProperty, Utils.PulseAnimation(0.3));
                             DataStorage.LastApiPulseRepetitions += 1;
                         }
-                        DataStorage.LastWallet = double.Parse($"{currentWallet:0.00}");
+                        DataStorage.LastWallet = currentWallet;
                     });
                 }
             }

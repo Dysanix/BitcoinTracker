@@ -65,16 +65,16 @@ namespace BitcoinTracker
         public void SetCreditText()
         {
             lblCredits.Inlines.Clear();
-            lblCredits.FontSize = 16;
-            lblCredits.Inlines.Add(new Bold(new Run("BitcoinTracker v" + DataStorage.BtVersion + "\n")));
-            lblCredits.Inlines.Add("Created by Dysanix\n");
-            lblCredits.Inlines.Add(new Bold(new Run("BTC:")));
-            lblCredits.Inlines.Add(" 13NJUqZyb5rDPCj5zJnGhCFxQGy3JhdwNe\n\n");
+            lblCredits.FontSize = 14;
+            lblCredits.Inlines.Add(new Bold(new Run("BitcoinTracker " + DataStorage.BtVersion + "\n")));
+            lblCredits.Inlines.Add("Created by Dysanix\n\n");
             lblCredits.Inlines.Add(new Bold(new Run("♡ Donations ♡\n")));
             foreach (string donator in _updateManager.GetDonations())
             {
                 lblCredits.Inlines.Add(new Italic(new Run(donator + "\n")));
             }
+            lblCredits.Inlines.Add(new Bold(new Run("\nDonate BTC\n")));
+            lblCredits.Inlines.Add(" 13NJUqZyb5rDPCj5zJnGhCFxQGy3JhdwNe\n\n");
         }
 
         private void sliderInterval_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -162,6 +162,8 @@ namespace BitcoinTracker
                             IsEnabled = false
                         });
                         stckUpdateLog.Children.Add(new Label() { Height = 2 });
+                        btnUpdateVirusScan.Click += (o, args) => { Process.Start(_updateManager.GetScan()); };
+                        btnUpdateVirusScan.IsEnabled = true;
                     }
                 }
             }

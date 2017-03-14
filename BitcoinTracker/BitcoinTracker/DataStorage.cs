@@ -9,7 +9,7 @@ namespace BitcoinTracker
 {
     class DataStorage
     {
-        public static string BtVersion = "1.4.0";
+        public static string BtVersion = "1.4.2";
         public static double LastWallet = 0;
         public static string LastJsonString = "";
         public static int JsonRepetitions = 0;
