@@ -85,18 +85,6 @@ namespace BitcoinTracker.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool showPulseIcon {
-            get {
-                return ((bool)(this["showPulseIcon"]));
-            }
-            set {
-                this["showPulseIcon"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("GDax")]
         public string API {
             get {
@@ -104,6 +92,54 @@ namespace BitcoinTracker.Properties {
             }
             set {
                 this["API"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double alertHigh {
+            get {
+                return ((double)(this["alertHigh"]));
+            }
+            set {
+                this["alertHigh"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool checkForUpdates {
+            get {
+                return ((bool)(this["checkForUpdates"]));
+            }
+            set {
+                this["checkForUpdates"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool muted {
+            get {
+                return ((bool)(this["muted"]));
+            }
+            set {
+                this["muted"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double alertLow {
+            get {
+                return ((double)(this["alertLow"]));
+            }
+            set {
+                this["alertLow"] = value;
             }
         }
     }

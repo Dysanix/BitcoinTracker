@@ -39,6 +39,9 @@
   <PropertyGroup>
     <ApplicationIcon>img\bitcoin.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>BitcoinTracker.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MahApps.Metro, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.5.0-alpha008\lib\net45\MahApps.Metro.dll</HintPath>
@@ -48,9 +51,14 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.1-beta1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Notifications.Wpf, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Notifications.Wpf.0.1.1\lib\net45\Notifications.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.5.0-alpha008\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -76,6 +84,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataStorage.cs" />
     <Compile Include="DoubleTextBox.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -90,12 +99,15 @@
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="WalletWidget.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="TickerValues.cs" />
+    <Compile Include="UpdateManager.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="WalletWidget.xaml.cs">
+      <DependentUpon>WalletWidget.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Settings.xaml">
@@ -109,6 +121,7 @@
     </Compile>
     <None Include="bin\Debug\BitcoinTracker.exe.config" />
     <AppDesigner Include="Properties\" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -125,9 +138,6 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\cogwheel.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="img\bitcoin.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +152,14 @@
   <ItemGroup>
     <Resource Include="img\bluedot.png" />
     <Resource Include="img\reddot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notification.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\cogwheel.png" />
+    <Resource Include="img\mute.png" />
+    <Resource Include="img\unmute.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.1.29.3\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.3\build\dotnet\Fody.targets')" />

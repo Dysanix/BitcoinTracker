@@ -1,0 +1,17 @@
+{
+  "version": "1.4.0",
+  "changelog": [
+    "Added updates checker",
+    "Added notifications",
+    "Added value alerts",
+    "Added mute button",
+    "Added BTCe API",
+    "Added credits"
+  ],
+  "download": "https://www.dropbox.com/s/4uj4798hv4up2r3/BitcoinTracker.exe?dl=1",
+  "scan": "https://virustotal.com/nl/file/585b4955c0b2691aab0e443b99b742374b3654ead5fcda304a04f7829df52a51/analysis/1489466762/",
+  "message": "",
+  "donations": [
+    "$5 - Snow"
+  ]
+}

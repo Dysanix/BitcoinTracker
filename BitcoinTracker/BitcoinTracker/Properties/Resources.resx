@@ -125,6 +125,11 @@
             &lt;section name="BitcoinTracker.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" /&gt;
         &lt;/sectionGroup&gt;
     &lt;/configSections&gt;
+  &lt;system.net&gt;
+    &lt;settings&gt;
+      &lt;httpWebRequest useUnsafeHeaderParsing="true"  /&gt;
+    &lt;/settings&gt;
+  &lt;/system.net&gt;
     &lt;startup&gt; 
         &lt;supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2" /&gt;
     &lt;/startup&gt;
@@ -145,14 +150,27 @@
             &lt;setting name="inTaskbar" serializeAs="String"&gt;
                 &lt;value&gt;False&lt;/value&gt;
             &lt;/setting&gt;
-            &lt;setting name="showPulseIcon" serializeAs="String"&gt;
-                &lt;value&gt;True&lt;/value&gt;
-            &lt;/setting&gt;
             &lt;setting name="API" serializeAs="String"&gt;
                 &lt;value&gt;GDax&lt;/value&gt;
+            &lt;/setting&gt;
+            &lt;setting name="checkForUpdates" serializeAs="String"&gt;
+                &lt;value&gt;True&lt;/value&gt;
+            &lt;/setting&gt;
+            &lt;setting name="muted" serializeAs="String"&gt;
+                &lt;value&gt;False&lt;/value&gt;
+            &lt;/setting&gt;
+            &lt;setting name="alertHigh" serializeAs="String"&gt;
+                &lt;value&gt;0&lt;/value&gt;
+            &lt;/setting&gt;
+            &lt;setting name="alertLow" serializeAs="String"&gt;
+                &lt;value&gt;0&lt;/value&gt;
             &lt;/setting&gt;
         &lt;/BitcoinTracker.Properties.Settings&gt;
     &lt;/userSettings&gt;
 &lt;/configuration&gt;</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="notification" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\notification.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

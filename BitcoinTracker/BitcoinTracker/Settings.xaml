@@ -5,22 +5,67 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BitcoinTracker"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        Background="{StaticResource WindowBackgroundBrush}"
         mc:Ignorable="d"
-        Title="Settings" Height="341.583" Width="200" WindowStyle="ToolWindow" Topmost="True" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Settings" Height="210.916" Width="400" WindowStyle="ToolWindow" Topmost="True" WindowStartupLocation="Manual" ResizeMode="NoResize">
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button x:Name="btnMute" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20" Click="BtnMute_OnClick">
+                <StackPanel Orientation="Horizontal">
+                    <Image x:Name="btnMuteImage" Source="img/mute.png"/>
+                </StackPanel>
+            </Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
     <Grid>
-        <ComboBox x:Name="comboCurrency" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" Margin="75,72,10,0" VerticalAlignment="Top" />
-        <ComboBox x:Name="comboAPI" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" Margin="75,10,10,0" VerticalAlignment="Top"/>
-        <Label x:Name="label" Content="Currency:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" />
-        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Center" Margin="0,0,0,47" VerticalAlignment="Bottom" Width="75" Click="btnSave_Click"/>
-        <Label x:Name="label_Copy" Content="Refresh:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" />
-        <Label x:Name="lblInterval" Content="1500 ms" HorizontalContentAlignment="Center" Margin="75,126,10,0" VerticalAlignment="Top"/>
-        <Slider x:Name="sliderInterval" IsSnapToTickEnabled="True" HorizontalAlignment="Stretch" Margin="75,107,10,0" VerticalAlignment="Top" Height="19" Maximum="60000" Minimum="1500"  SmallChange="100" LargeChange="1000" ValueChanged="sliderInterval_ValueChanged" TickFrequency="100"  />
-        <Label x:Name="label_Copy1" Content="Bitcoins:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" />
-        <local:DoubleTextBox x:Name="txtBitcoins" VerticalContentAlignment="Center" PreviewTextInput="txtBitcoins_PreviewTextInput" HorizontalAlignment="Stretch" Height="26" Margin="75,41,10,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="lblCredit" TextAlignment="Center" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Bottom" Height="38" />
-        <CheckBox x:Name="chckTopMost" IsChecked="True" Content="Keep in foreground" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="chckTaskbar" Content="Show in taskbar" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="chckPulseIcon" Content="Show pulse icon" HorizontalAlignment="Left" Margin="10,203,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Copy3" Content="API:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" />
-        </Grid>
+        <TabControl x:Name="SettingsTabControl" SelectionChanged="SettingsTabControl_OnSelectionChanged">
+            <TabItem Header="General" Controls:ControlsHelper.HeaderFontSize="16">
+                <Grid>
+                    <ComboBox x:Name="comboCurrency" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" Margin="75,72,203,0" VerticalAlignment="Top" />
+                    <ComboBox x:Name="comboAPI" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" Margin="75,10,203,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label" Content="Currency:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" />
+                    <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Center" Margin="0,0,0,10" VerticalAlignment="Bottom" Width="75" Click="btnSave_Click"/>
+                    <Label x:Name="label_Copy" Content="Refresh Interval:" HorizontalAlignment="Left" Margin="198,56,0,0" VerticalAlignment="Top" />
+                    <Label x:Name="lblInterval" Content="1.5 sec" HorizontalContentAlignment="Center" Margin="297,56,10,0" VerticalAlignment="Top"/>
+                    <Slider x:Name="sliderInterval" IsSnapToTickEnabled="True" HorizontalAlignment="Stretch" Margin="198,79,10,0" VerticalAlignment="Top" Height="19" Maximum="60000" Minimum="1500"  SmallChange="100" LargeChange="1000" ValueChanged="sliderInterval_ValueChanged" TickFrequency="100"  />
+                    <Label x:Name="label_Copy1" Content="Bitcoins:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="60" />
+                    <local:DoubleTextBox x:Name="txtBitcoins" VerticalContentAlignment="Center" PreviewTextInput="txtBitcoins_PreviewTextInput" HorizontalAlignment="Stretch" Height="26" Margin="75,41,203,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="chckTopMost" IsChecked="True" Content="Stay in foreground" HorizontalAlignment="Left" Margin="198,10,0,0" VerticalAlignment="Top" Width="180"/>
+                    <CheckBox x:Name="chckTaskbar" Content="Show in taskbar" HorizontalAlignment="Left" Margin="198,33,0,0" VerticalAlignment="Top" Width="180"/>
+                    <Label x:Name="label_Copy3" HorizontalContentAlignment="Right" Content="API:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="60" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Alerts" Controls:ControlsHelper.HeaderFontSize="16">
+                <Grid>
+                    <Label x:Name="label1" Content="Notify me when my wallet reaches a value of..." VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="368" Height="36"/>
+                    <Label x:Name="lblHigherThan" Content="Higher than:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="74,41,0,0" VerticalAlignment="Top" Width="119" Foreground="Lime"/>
+                    <Label x:Name="lblLowerThan" Content="Lower than:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="74,72,0,0" VerticalAlignment="Top" Width="119" Foreground="Red"/>
+                    <local:DoubleTextBox x:Name="doubleHigh"  VerticalContentAlignment="Center" GotFocus="DoubleHighLow_OnGotFocus" LostFocus="DoubleHighLow_OnLostFocus" HorizontalAlignment="Left" Margin="193,41,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="110" Height="26"/>
+                    <local:DoubleTextBox x:Name="doubleLow"  VerticalContentAlignment="Center" GotFocus="DoubleHighLow_OnGotFocus" LostFocus="DoubleHighLow_OnLostFocus" HorizontalAlignment="Left" Margin="193,72,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="110" Height="26"/>
+                    <Label x:Name="label1_Copy" Content="(Autosaves)" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Margin="10,0,10,0" VerticalAlignment="Bottom" Height="36"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Updates" Controls:ControlsHelper.HeaderFontSize="16" >
+                <Grid>
+                    <Button x:Name="btnUpdateDownload"  Content="Download Update" IsEnabled="False" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Bottom" Width="112" />
+                    <Button x:Name="btnUpdateVirusScan"  Content="Virus Scan" IsEnabled="False" HorizontalAlignment="Center" Margin="308,0,10,10" VerticalAlignment="Bottom" Width="70" />
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="10,36,10,42">
+                        <StackPanel x:Name="stckUpdateLog" Orientation="Vertical"/>
+                    </ScrollViewer>
+                    <Label x:Name="lblUpdateStatus" Content="BitcoinTracker is up-to-date!" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="368" Height="36"/>
+                    <CheckBox x:Name="chckCheckForUpdates" Content="Check periodically" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" Width="123" Click="ChckCheckForUpdates_OnClick"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Credits" Controls:ControlsHelper.HeaderFontSize="16">
+                <Grid>
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock x:Name="lblCredits" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Stretch" Margin="10,10,10,0" VerticalAlignment="Stretch" FontFamily="Segoe UI"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
 </Controls:MetroWindow>
