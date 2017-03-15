@@ -8,6 +8,7 @@ C:\Users\Dysanix\Documents\Visual Studio 2015\Projects\BitcoinTracker\BitcoinTra
 C:\Users\Dysanix\Documents\Visual Studio 2015\Projects\BitcoinTracker\BitcoinTracker\bin\Debug\MahApps.Metro.pdb
 C:\Users\Dysanix\Documents\Visual Studio 2015\Projects\BitcoinTracker\BitcoinTracker\bin\Debug\MahApps.Metro.xml
 C:\Users\Dysanix\Documents\Visual Studio 2015\Projects\BitcoinTracker\BitcoinTracker\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Dysanix\Documents\Visual Studio 2015\Projects\BitcoinTracker\BitcoinTracker\obj\Debug\BitcoinTracker.csprojResolveAssemblyReference.cache
 C:\Users\Dysanix\Documents\Visual Studio 2015\Projects\BitcoinTracker\BitcoinTracker\obj\Debug\WalletWidget.g.cs
 C:\Users\Dysanix\Documents\Visual Studio 2015\Projects\BitcoinTracker\BitcoinTracker\obj\Debug\Settings.g.cs
 C:\Users\Dysanix\Documents\Visual Studio 2015\Projects\BitcoinTracker\BitcoinTracker\obj\Debug\App.g.cs
@@ -22,4 +23,3 @@ C:\Users\Dysanix\Documents\Visual Studio 2015\Projects\BitcoinTracker\BitcoinTra
 C:\Users\Dysanix\Documents\Visual Studio 2015\Projects\BitcoinTracker\BitcoinTracker\obj\Debug\BitcoinTracker.csproj.GenerateResource.Cache
 C:\Users\Dysanix\Documents\Visual Studio 2015\Projects\BitcoinTracker\BitcoinTracker\obj\Debug\BitcoinTracker.exe
 C:\Users\Dysanix\Documents\Visual Studio 2015\Projects\BitcoinTracker\BitcoinTracker\obj\Debug\BitcoinTracker.pdb
-C:\Users\Dysanix\Documents\Visual Studio 2015\Projects\BitcoinTracker\BitcoinTracker\obj\Debug\BitcoinTracker.csprojResolveAssemblyReference.cache
