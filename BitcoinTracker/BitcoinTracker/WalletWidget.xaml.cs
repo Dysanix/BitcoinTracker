@@ -11,7 +11,6 @@ using System.Text;
 using System.Threading;
 using System.Timers;
 using System.Windows;
-using System.Windows.Forms;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
@@ -39,22 +38,8 @@ namespace BitcoinTracker
         public WalletWidget()
         {
             Instance = this;
-            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\" + System.AppDomain.CurrentDomain.FriendlyName + ".config"))
-            {
-                File.WriteAllText(
-                    AppDomain.CurrentDomain.BaseDirectory + "\\" + System.AppDomain.CurrentDomain.FriendlyName +
-                    ".config", Properties.Resources.configfile);
-                System.Windows.Forms.MessageBox.Show(
-                    "Configuration file has been created!\nBitcoinTracker has to restart now!", "BitcoinTracker",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Process.Start(System.Reflection.Assembly.GetExecutingAssembly().Location);
-                Application.Current.Shutdown();
-            }
-            else
-            {
-                InitializeComponent();
-                Initialization();
-            }
+            InitializeComponent();
+            Initialization();
         }
 
         private void Initialization()

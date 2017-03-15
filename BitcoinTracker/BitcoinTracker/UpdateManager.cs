@@ -38,7 +38,7 @@ namespace BitcoinTracker
                 _webClient.Proxy = null;
                 _updateObject =
                     JsonConvert.DeserializeObject(
-                        _webClient.DownloadString("https://www.dropbox.com/s/3zsxx8ypr19geiy/version.txt?dl=1"));
+                        _webClient.DownloadString("https://raw.githubusercontent.com/Dysanix/BitcoinTracker/master/BitcoinTracker/version.txt"));
             }
             catch (Exception e)
             {
